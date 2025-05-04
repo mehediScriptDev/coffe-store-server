@@ -19,7 +19,8 @@ const client = new MongoClient(uri, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
-  }
+  },
+  tls: true
 });
 
 async function run() {
@@ -27,9 +28,9 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
-    app.post('/addCofee', async(req,res)=>{
+    app.post('/cofee', async(req,res)=>{
       const newProduct = req.body;
-      console.log(newProduct)
+      res.send(newProduct)
     })
     
     // Send a ping to confirm a successful connection

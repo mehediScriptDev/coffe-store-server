@@ -27,7 +27,10 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
-
+    app.post('/addCofee', async(req,res)=>{
+      const newProduct = req.body;
+      console.log(newProduct)
+    })
     
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });

@@ -29,12 +29,16 @@ async function run() {
     await client.connect();
     const coffeCollection = client.db("coffeDB").collection("coffe");
     
-
+    app.get('/coffe', async (req,res)=>{
+      const cursor = coffeCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    })
 
     app.post('/coffe', async(req,res)=>{
       const newCoffe =req.body;
       const result = await coffeCollection.insertOne(newCoffe);
-      res.send(result)
+      res.send(result);
     })
 
 
